@@ -1,0 +1,162 @@
+{% block content %}
+<div class="container">
+    <h1>Create Event</h1>
+    <form method="post" enctype="multipart/form-data" action="{% url 'event_create' %}" class="event-form">
+        {% csrf_token %}
+        
+        <!-- Event Title -->
+        <p>
+            <label for="id_title">Event Title:</label>
+            <input type="text" id="id_title" name="title" placeholder="Enter event title" required>
+        </p>
+        
+        <!-- Event Description -->
+        <p>
+            <label for="id_description">Event Description:</label>
+            <textarea id="id_description" name="description" placeholder="Enter event description" required></textarea>
+        </p>
+        
+        <!-- Event Location -->
+        <p>
+            <label for="id_location">Location:</label>
+            <input type="text" id="id_location" name="location" placeholder="Enter event location" required>
+        </p>
+        
+        <!-- Start Time -->
+        <p>
+            <label for="id_start_time">Start Time:</label>
+            <input type="datetime-local" id="id_start_time" name="start_time" required>
+        </p>
+        
+        <!-- End Time -->
+        <p>
+            <label for="id_end_time">End Time:</label>
+            <input type="datetime-local" id="id_end_time" name="end_time" required>
+        </p>
+
+        <!-- Event Image (optional) -->
+        <p>
+            <label for="id_image">Event Image (optional):</label>
+            <input type="file" id="id_image" name="image">
+        </p>
+        
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit">Create Event</button>
+    </form>
+
+    <!-- Back to Dashboard Link -->
+    <div class="back-link">
+        <a href="{% url 'event_dashboard' %}">← Back to Event Dashboard</a>
+    </div>
+</div>
+{% endblock %}
+
+<style>
+    /* Basic container for centering */
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 20px;
+        background-color: #f4f6f9; /* Light background color */
+    }
+
+    h1 {
+        font-size: 2.5em;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Styling the form */
+    .event-form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px; /* Reduced the form width */
+    }
+
+    /* Adjust form field spacing and appearance */
+    .event-form p {
+        margin-bottom: 15px;
+    }
+
+    .event-form label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    .event-form input[type="text"],
+    .event-form input[type="datetime-local"],
+    .event-form input[type="file"],
+    .event-form textarea {
+        width: 100%;
+        padding: 8px; /* Reduced padding */
+        margin-bottom: 10px; /* Reduced margin */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 14px; /* Reduced font size */
+    }
+
+    .event-form textarea {
+        height: 120px; /* Reduced textarea height */
+        resize: vertical;
+    }
+
+    /* Styling the button */
+    .btn-submit {
+        background-color: #2d0bee;
+        color: white;
+        padding: 10px 15px; /* Reduced padding */
+        font-size: 16px; /* Reduced font size */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        text-align: center;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-submit:hover {
+        background-color: #1a00c3;
+        transform: scale(1.05); /* Slightly increase size on hover */
+    }
+
+    /* Back to Dashboard Link */
+    .back-link {
+        margin-top: 20px;
+    }
+
+    .back-link a {
+        color: #2d0bee;
+        text-decoration: none;
+        font-size: 16px;
+        transition: color 0.3s;
+    }
+
+    .back-link a:hover {
+        color: #1a00c3;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 600px) {
+        .container {
+            padding: 10px;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        .event-form {
+            padding: 15px; /* Reduced padding for smaller screens */
+        }
+    }
+</style>

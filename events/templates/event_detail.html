@@ -1,0 +1,125 @@
+{% block content %}
+<style>
+    /* Center the container both horizontally and vertically */
+    body, html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    /* Style for the event details box */
+    .event-details {
+        display: inline-block;
+        width: 100%;
+        max-width: 600px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+        font-size: 2em;
+        color: #333;
+    }
+    
+    p {
+        font-size: 1.1em;
+        line-height: 1.6;
+    }
+
+    /* Style for the back to dashboard link */
+    .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-link a {
+            text-decoration: none;
+            font-size: 1.2em;
+            color: #2d0bee;
+            transition: color 0.3s;
+        }
+
+        .back-link a:hover {
+            color: #1a00c3;
+        }
+
+    /* Style for the register button */
+    .register-btn {
+        padding: 10px 15px;
+        font-size: 1.1em;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .register-btn:hover {
+        background-color: #218838;
+    }
+
+    /* Style for displaying messages */
+    .messages {
+        list-style: none;
+        padding: 0;
+        margin: 15px 0;
+    }
+
+    .messages li {
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 4px;
+    }
+
+    .messages li.success {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    .messages li.error {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+</style>
+
+<div class="container">
+    <div class="event-details">
+        <h1>{{ event.title }}</h1>
+        <p>{{ event.description }}</p>
+        <p><strong>Location:</strong> {{ event.location }}</p>
+        <p><strong>Start Time:</strong> {{ event.start_time }}</p>
+        <p><strong>End Time:</strong> {{ event.end_time }}</p>
+
+        {% if user.is_authenticated %}
+            <form method="post" action="{% url 'register_event' event.id %}">
+                {% csrf_token %}
+                <button type="submit" class="register-btn">Register</button>
+            </form>
+        {% endif %}
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                        {{ message }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="back-link">
+        <a href="{% url 'event_dashboard' %}">← Back to Event Dashboard</a>
+    </div>
+</div>
+
+{% endblock %}

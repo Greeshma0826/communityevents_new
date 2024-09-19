@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <h1><title>Login</title></h1>
+    <style>
+        /* Basic reset for margin and padding */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Centering content vertically and horizontally */
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Full viewport height */
+            background: linear-gradient(135deg, #adadae 0%, #c7e6f5 100%);
+        }
+
+        .form-box {
+            background-color: #ffffff; /* Light background for the form box */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+            width: 100%;
+            max-width: 400px; /* Maximum width of the form box */
+            text-align: center;
+        }
+
+        .form-box h2 {
+            margin-bottom: 20px; /* Space between title and form */
+            color: #333; /* Dark color for the title */
+        }
+
+        .form-box button {
+            background-color: #2d0bee;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+        }
+
+        .form-box button:hover {
+            background-color: #1a00c3;
+            transform: scale(1.05); /* Slight scale-up effect on hover */
+        }
+
+        .form-box p {
+            margin-top: 20px; /* Space between form and registration link */
+        }
+
+        .form-box a {
+            color: #2d0bee;
+            text-decoration: none;
+        }
+
+        .form-box a:hover {
+            text-decoration: underline; /* Underline on hover for the link */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h2>Login</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Login</button>
+            </form>
+            <p>
+                Don't have an account? <a href="{% url 'signup' %}">Register here</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

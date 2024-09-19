@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event List</title>
+    <style>
+        /* Basic styling for the page */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        .header {
+            background-color: #2d0bee;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .logout-container {
+            text-align: right;
+            padding: 10px 20px;
+            background-color: #ffffff;
+        }
+
+        .logout-button {
+            text-decoration: none;
+            color: #000000;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #dc3545;
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #000000;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .logout-button:hover {
+            background-color: #c82333; /* Darker shade on hover */
+            border-color: #c82333; /* Border color changes with hover */
+            color: #000000; /* Ensure text color remains black on hover */
+            transform: scale(1.05); /* Slight scale-up effect on hover */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: calc(100vh - 100px); /* Adjust height to leave space for header and logout button */
+            padding: 0 20px;
+        }
+
+        .event-list-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .event-list-box h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .event-item {
+            margin-bottom: 15px;
+        }
+
+        .event-item h2 {
+            margin: 0;
+            color: #555;
+        }
+
+        .event-item a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+        }
+
+        .event-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Back to dashboard link styling */
+        .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-link a {
+            text-decoration: none;
+            font-size: 1.2em;
+            color: #2d0bee;
+            transition: color 0.3s;
+        }
+
+        .back-link a:hover {
+            color: #1a00c3;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Community Events Website</h1>
+    </div>
+    <div class="logout-container">
+        <a href="{% url 'custom_logout' %}" class="logout-button">Logout</a>
+    </div>
+    <div class="container">
+        <div class="event-list-box">
+            <h1>Event List</h1>
+            {% for event in events %}
+                <div class="event-item">
+                    <h2>{{ event.title }}</h2>
+                    <p>{{ event.description }}</p>
+                    <a href="{% url 'event_detail' event.pk %}">View Details</a>
+                </div>
+            {% empty %}
+                <p>No events available.</p>
+            {% endfor %}
+        </div>
+
+        <!-- Back to Dashboard Link -->
+        <div class="back-link">
+            <a href="{% url 'event_dashboard' %}">← Back to Event Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

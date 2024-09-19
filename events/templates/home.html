@@ -1,0 +1,78 @@
+{% load static %}
+{% block content %}
+<div class="center-content">
+    <div class="content-box">
+        <h1>Welcome to Community Events</h1>
+        <!-- Login button -->
+        <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+
+        <!-- Signup button -->
+        <a href="{% url 'signup' %}" class="btn btn-secondary">Signup</a>
+    </div>
+</div>
+{% endblock %}
+
+<style>
+    /* Gradient background for the entire page */
+    body {
+        background: linear-gradient(135deg, #adadae 0%, #c7e6f5 100%);
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Centering content vertically and horizontally */
+    .center-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh; /* Full viewport height */
+        text-align: center;
+    }
+
+    .content-box {
+        background-color: #ffffff; /* Light background for the box */
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Deeper box shadow for more emphasis */
+        width: 400px;
+        text-align: center;
+    }
+
+    .content-box h1 {
+        margin-bottom: 30px; /* Increased space between title and buttons */
+        color: #333; /* Darker color for the title */
+        font-size: 2.5em; /* Larger title */
+    }
+
+    .btn {
+        display: inline-block;
+        width: 160px; /* Slightly wider buttons */
+        margin: 10px; /* Space between the buttons */
+        padding: 12px;
+        font-size: 18px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 24px; /* Slightly larger border radius */
+        color: white;
+        transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+    }
+
+    .btn-primary {
+        background-color: #2d0bee;
+    }
+
+    .btn-secondary {
+        background-color: #0f08e6;
+    }
+
+    .btn-primary:hover {
+        background-color: #1a00c3; /* Darker shade on hover */
+        transform: scale(1.05); /* Slight scale-up effect on hover */
+    }
+
+    .btn-secondary:hover {
+        background-color: #0d07b0; /* Darker shade on hover */
+        transform: scale(1.05); /* Slight scale-up effect on hover */
+    }
+</style>

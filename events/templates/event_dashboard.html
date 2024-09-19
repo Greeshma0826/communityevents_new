@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Dashboard</title>
+    <style>
+        /* Basic reset for margin and padding */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5; /* Light background color */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+        }
+
+        .dashboard-box {
+            background-color: #ffffff; /* White background for the dashboard box */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+            width: 100%;
+            max-width: 800px; /* Maximum width of the dashboard box */
+            text-align: center;
+        }
+
+        .dashboard-box h1 {
+            margin-bottom: 20px; /* Space between title and sections */
+            color: #333; /* Dark color for the title */
+        }
+
+        .dashboard-box section {
+            margin-bottom: 20px; /* Space between sections */
+        }
+
+        .dashboard-box h2 {
+            margin-bottom: 10px; /* Space between section title and link */
+            color: #555; /* Slightly lighter color for section titles */
+        }
+
+        .dashboard-box a {
+            display: inline-block;
+            text-decoration: none;
+            color: #000000; /* Black text color */
+            background-color: #b898b6; /* Primary button color */
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 2px solid #000000; /* Border matching the button color */
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s, color 0.3s; /* Smooth transition */
+        }
+
+        .dashboard-box a:hover {
+            background-color: #b898b6; /* Darker shade on hover */
+            border-color: #000000; /* Border color changes with hover */
+            color: #000000; /* Ensure text color remains black on hover */
+            transform: scale(1.05); /* Slight scale-up effect on hover */
+        }
+
+        .dashboard-box form {
+            display: flex;
+            justify-content: center;
+        }
+
+        .dashboard-box button {
+            background-color: #dc3545; /* Red color for the logout button */
+            color: #000000; /* Black text color */
+            border: 2px solid #000000; /* Border matching the button color */
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, color 0.3s; /* Smooth transition */
+        }
+
+        .dashboard-box button:hover {
+            background-color: #c82333; /* Darker shade on hover */
+            border-color: #c82333; /* Border color changes with hover */
+            color: #000000; /* Ensure text color remains black on hover */
+            transform: scale(1.05); /* Slight scale-up effect on hover */
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            border: 2px solid #b898b6; /* Border matching button color */
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 500px;
+            transition: border-color 0.3s;
+        }
+
+        .search-bar input[type="text"]:focus {
+            border-color: #000000; /* Darker border on focus */
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            border: 2px solid #000000; /* Border matching button color */
+            border-radius: 5px;
+            background-color: #b898b6; /* Primary button color */
+            color: #000000;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #a682a2; /* Darker shade on hover */
+            border-color: #a682a2; /* Border color changes with hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-box">
+            <h1>Event Dashboard</h1>
+
+            <!-- Search bar for NLP event search -->
+            <div class="search-bar">
+                <form method="GET" action="{% url 'search_results' %}">
+                    <input type="text" name="query" placeholder="Search for events...">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+
+            <section id="register-for-events">
+                <a href="{% url 'event_list' %}">Register for Events</a>
+            </section>
+
+            <section id="create-event">
+                <a href="{% url 'event_create' %}">Create a new event</a>
+            </section>
+
+            <section id="event-list">
+                <a href="{% url 'event_list' %}">View all events</a>
+            </section>            
+
+            <section id="my-events">
+                <a href="{% url 'my_events' %}">View my events</a>
+            </section>
+
+            <section id="my-registrations">
+                <a href="{% url 'my_registrations' %}">View my registrations</a>
+            </section>
+
+            <section id="event-recommendations">
+                <a href="{% url 'event_recommendations' %}">See recommendations</a>
+            </section>
+
+            <section id="feedback">
+                <a href="{% url 'feedback' %}">Give feedback</a>
+            </section>
+
+            <section id="logout">
+                <form method="post" action="{% url 'custom_logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

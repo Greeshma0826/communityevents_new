@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Form</title>
+    <style>
+        /* Basic reset for margin and padding */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .feedback-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .feedback-form p {
+            margin-bottom: 15px;
+        }
+
+        .feedback-form label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .feedback-form input[type="text"],
+        .feedback-form input[type="email"],
+        .feedback-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .feedback-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background-color: #2d0bee;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #1a00c3;
+            transform: scale(1.05);
+        }
+
+        .back-link {
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: #2d0bee;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .back-link a:hover {
+            color: #1a00c3;
+        }
+
+        .star-rating {
+            display: flex;
+            direction: row-reverse;
+            font-size: 0;
+            margin-bottom: 15px;
+        }
+
+        .star-rating input[type="radio"] {
+            display: none;
+        }
+
+        .star-rating label {
+            font-size: 2em;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .star-rating label:before {
+            content: "\2605";
+        }
+
+        .star-rating input[type="radio"]:checked ~ label {
+            color: #f5c518;
+        }
+
+        .star-rating input[type="radio"]:checked ~ label:hover,
+        .star-rating label:hover {
+            color: #ffb600;
+        }
+
+        .star-rating input[type="radio"]:checked ~ label:hover ~ label {
+            color: #ccc;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .feedback-form {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback Form</h1>
+        <form method="post" class="feedback-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            
+            <!-- Rating section is now rendered by the form field -->
+            
+            <button type="submit" class="btn-submit">Submit Feedback</button>
+        </form>
+
+        <!-- Back to Dashboard Link -->
+        <div class="back-link">
+            <a href="{% url 'event_dashboard' %}">← Back to Event Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

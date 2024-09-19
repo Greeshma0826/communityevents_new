@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Registrations</title>
+    <style>
+        /* Basic reset for margin and padding */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5; /* Light background color */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        li {
+            font-size: 1.2em;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        li a {
+            color: #2d0bee;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        li a:hover {
+            color: #1a00c3;
+        }
+
+        li p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        /* Back to Dashboard Link */
+        .back-link {
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            text-decoration: none;
+            font-size: 1.2em;
+            color: #2d0bee;
+            transition: color 0.3s;
+        }
+
+        .back-link a:hover {
+            color: #1a00c3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Registrations</h1>
+
+        <ul>
+            {% for registration in registrations %}
+            <li>
+                <a href="{% url 'event_detail' registration.event.id %}">{{ registration.event.title }}</a>
+                <p>Registered on: {{ registration.registered_at|date:"F j, Y, g:i a" }}</p>
+
+            </li>
+            {% empty %}
+            <li>No registrations found.</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Back to Dashboard Link -->
+        <div class="back-link">
+            <a href="{% url 'event_dashboard' %}">← Back to Event Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

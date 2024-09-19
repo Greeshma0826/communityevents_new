@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Event</title>
+    <style>
+        /* Optional: Add some basic styling */
+        form {
+            max-width: 600px;
+            margin: auto;
+            padding: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        div {
+            margin-bottom: 1em;
+        }
+        label {
+            margin-bottom: .5em;
+            color: #333333;
+            display: block;
+        }
+        input, textarea {
+            border: 1px solid #cccccc;
+            padding: .5em;
+            font-size: 1em;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 0.7em;
+            color: #ffffff;
+            background: #007bff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .button-group {
+            text-align: center;
+            margin-top: 1em;
+        }
+        .button-group a {
+            text-decoration: none;
+            color: #ffffff;
+            background: #28a745;
+            padding: 0.7em 1.5em;
+            border-radius: 5px;
+            font-size: 1em;
+            margin: 0 0.5em;
+        }
+        .button-group a:hover {
+            background: #218838;
+        }
+        .logout-btn {
+            background: #dc3545;
+        }
+        .logout-btn:hover {
+            background: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Event</button>
+    </form>
+
+    <div class="button-group">
+        <a href="{% url 'event_dashboard' %}">Go to Event Dashboard</a>
+        <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+    </div>
+</body>
+</html>

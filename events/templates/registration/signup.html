@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <form method="post" action="{% url 'signup' %}">
+        {% csrf_token %}
+        <div>
+            <label for="id_username">Username:</label><br>
+            <input type="text" name="username" id="id_username" maxlength="150" required>
+            {% if form.username.errors %}
+                <div class="error">{{ form.username.errors }}</div>
+            {% endif %}
+        </div>
+        <div>
+            <label for="id_email">Email:</label><br>
+            <input type="email" name="email" id="id_email" required>
+            {% if form.email.errors %}
+                <div class="error">{{ form.email.errors }}</div>
+            {% endif %}
+        </div>
+        <div>
+            <label for="id_password1">Password:</label><br>
+            <input type="password" name="password1" id="id_password1" minlength="8" required>
+            {% if form.password1.errors %}
+                <div class="error">{{ form.password1.errors }}</div>
+            {% endif %}
+        </div>
+        <div>
+            <label for="id_password2">Password confirmation:</label><br>
+            <input type="password" name="password2" id="id_password2" required>
+            {% if form.password2.errors %}
+                <div class="error">{{ form.password2.errors }}</div>
+            {% endif %}
+        </div>
+        <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+</body>
+</html>
