@@ -12,18 +12,53 @@
             background-color: #f0f2f5; /* Light background color */
         }
 
+        /* Header styling */
+        .header {
+            background-color: #2d0bee;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+        }
+
+        /* Logout button styling */
+        .logout-container {
+            text-align: right;
+            padding: 10px 20px;
+            background-color: #ffffff;
+        }
+
+        .logout-button {
+            text-decoration: none;
+            color: #000000;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #dc3545;
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #000000;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .logout-button:hover {
+            background-color: #c82333;
+            border-color: #c82333;
+            transform: scale(1.05);
+        }
+
         .container {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: calc(100vh - 160px); /* Adjust height considering header and logout */
             text-align: center;
+            padding: 20px;
         }
 
         h1 {
             font-size: 2.5em;
-            color: #333;
+            color: #ffffff;
             margin-bottom: 20px;
         }
 
@@ -62,6 +97,17 @@
     </style>
 </head>
 <body>
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Community Events Website</h1>
+    </div>
+
+    <!-- Logout Button -->
+    <div class="logout-container">
+        <a href="{% url 'custom_logout' %}" class="logout-button">Logout</a>
+    </div>
+
+    <!-- Main Content -->
     <div class="container">
         <h1>My Events</h1>
         <ul>
