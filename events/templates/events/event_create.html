@@ -1,202 +1,142 @@
-{% block content %}
-<div class="header">
-    <h1>Community Events Website</h1>
-</div>
+/* Header styling */
+.header {
+    background-color: #2d0bee;
+    color: white;
+    padding: 20px; /* Increased padding for a more defined header */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
 
-<div class="logout-container">
-    <a href="{% url 'custom_logout' %}" class="logout-button">Logout</a>
-</div>
+/* Logout button styling */
+.logout-container {
+    text-align: right;
+    padding: 10px 20px;
+    background-color: #ffffff;
+}
 
-<div class="container">
-    <h1>Create Event</h1>
-    <form method="post" enctype="multipart/form-data" action="{% url 'event_create' %}" class="event-form">
-        {% csrf_token %}
-        
-        <!-- Event Title -->
-        <p>
-            <label for="id_title">Event Title:</label>
-            <input type="text" id="id_title" name="title" placeholder="Enter event title" required>
-        </p>
-        
-        <!-- Event Description -->
-        <p>
-            <label for="id_description">Event Description:</label>
-            <textarea id="id_description" name="description" placeholder="Enter event description" required></textarea>
-        </p>
-        
-        <!-- Event Location -->
-        <p>
-            <label for="id_location">Location:</label>
-            <input type="text" id="id_location" name="location" placeholder="Enter event location" required>
-        </p>
-        
-        <!-- Start Time -->
-        <p>
-            <label for="id_start_time">Start Time:</label>
-            <input type="datetime-local" id="id_start_time" name="start_time" required>
-        </p>
-        
-        <!-- End Time -->
-        <p>
-            <label for="id_end_time">End Time:</label>
-            <input type="datetime-local" id="id_end_time" name="end_time" required>
-        </p>
+.logout-button {
+    text-decoration: none;
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #dc3545;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    transition: background-color 0.3s, color 0.3s;
+}
 
-        <!-- Event Image (optional) -->
-        <p>
-            <label for="id_image">Event Image (optional):</label>
-            <input type="file" id="id_image" name="image">
-        </p>
-        
-        <!-- Submit Button -->
-        <button type="submit" class="btn-submit">Create Event</button>
-    </form>
+.logout-button:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+    transform: scale(1.05);
+}
 
-    <!-- Back to Dashboard Link -->
-    <div class="back-link">
-        <a href="{% url 'event_dashboard' %}">← Back to Event Dashboard</a>
-    </div>
-</div>
-{% endblock %}
+/* Basic container for centering */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto; /* Changed from 100vh to auto for flexibility */
+    padding: 40px 20px; /* Increased padding to push content down */
+    background-color: #f4f6f9;
+    margin-top: 20px; /* Adds margin to push the form down */
+}
 
-<style>
-    /* Header styling */
-    .header {
-        background-color: #2d0bee;
-        color: white;
-        padding: 10px 20px;
-        text-align: center;
-    }
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 30px; /* Added margin to prevent overlap */
+}
 
-    /* Logout button styling */
-    .logout-container {
-        text-align: right;
-        padding: 10px 20px;
-        background-color: #ffffff;
-    }
+/* Styling the form */
+.event-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
 
-    .logout-button {
-        text-decoration: none;
-        color: #000000;
-        font-size: 16px;
-        font-weight: bold;
-        background-color: #dc3545;
-        padding: 8px 12px;
-        border-radius: 5px;
-        border: 1px solid #000000;
-        transition: background-color 0.3s, color 0.3s;
-    }
+.event-form p {
+    margin-bottom: 15px;
+}
 
-    .logout-button:hover {
-        background-color: #c82333;
-        border-color: #c82333;
-        transform: scale(1.05);
-    }
+.event-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
 
-    /* Basic container for centering */
+.event-form input[type="text"],
+.event-form input[type="datetime-local"],
+.event-form input[type="file"],
+.event-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure consistent sizing */
+    font-size: 14px;
+}
+
+.event-form textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+/* Styling the button */
+.btn-submit {
+    background-color: #2d0bee;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #1a00c3;
+    transform: scale(1.05);
+}
+
+/* Back to Dashboard Link */
+.back-link {
+    margin-top: 20px;
+}
+
+.back-link a {
+    color: #2d0bee;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.back-link a:hover {
+    color: #1a00c3;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
     .container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: calc(100vh - 100px); /* Adjust height to leave space for header and logout button */
-        padding: 20px;
-        background-color: #f4f6f9;
+        padding: 10px;
     }
 
     h1 {
-        font-size: 2.5em;
-        color: #333;
-        margin-bottom: 20px;
-        text-align: center;
+        font-size: 2em;
     }
 
-    /* Styling the form */
     .event-form {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 400px;
+        padding: 15px;
     }
-
-    .event-form p {
-        margin-bottom: 15px;
-    }
-
-    .event-form label {
-        font-weight: bold;
-        display: block;
-        margin-bottom: 5px;
-        color: #555;
-    }
-
-    .event-form input[type="text"],
-    .event-form input[type="datetime-local"],
-    .event-form input[type="file"],
-    .event-form textarea {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-        font-size: 14px;
-    }
-
-    .event-form textarea {
-        height: 120px;
-        resize: vertical;
-    }
-
-    /* Styling the button */
-    .btn-submit {
-        background-color: #2d0bee;
-        color: white;
-        padding: 10px 15px;
-        font-size: 16px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        width: 100%;
-        text-align: center;
-        transition: background-color 0.3s, transform 0.3s;
-    }
-
-    .btn-submit:hover {
-        background-color: #1a00c3;
-        transform: scale(1.05);
-    }
-
-    /* Back to Dashboard Link */
-    .back-link {
-        margin-top: 20px;
-    }
-
-    .back-link a {
-        color: #2d0bee;
-        text-decoration: none;
-        font-size: 16px;
-        transition: color 0.3s;
-    }
-
-    .back-link a:hover {
-        color: #1a00c3;
-    }
-
-    /* Mobile responsiveness */
-    @media (max-width: 600px) {
-        .container {
-            padding: 10px;
-        }
-
-        h1 {
-            font-size: 2em;
-        }
-
-        .event-form {
-            padding: 15px;
-        }
-    }
-</style>
+}
