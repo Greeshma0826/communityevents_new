@@ -1,12 +1,4 @@
 {% block content %}
-<div class="header">
-    <h1>Community Events Website</h1>
-</div>
-
-<div class="logout-container">
-    <a href="{% url 'custom_logout' %}" class="logout-button">Logout</a>
-</div>
-
 <div class="container">
     <h1>Create Event</h1>
     <form method="post" enctype="multipart/form-data" action="{% url 'event_create' %}" class="event-form">
@@ -60,50 +52,15 @@
 {% endblock %}
 
 <style>
-    /* Header styling */
-    .header {
-        background-color: #2d0bee;
-        color: white;
-        padding: 20px; /* Increased padding for a more defined header */
-        text-align: center;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-    }
-
-    /* Logout button styling */
-    .logout-container {
-        text-align: right;
-        padding: 10px 20px;
-        background-color: #ffffff;
-    }
-
-    .logout-button {
-        text-decoration: none;
-        color: #000000;
-        font-size: 16px;
-        font-weight: bold;
-        background-color: #dc3545;
-        padding: 8px 12px;
-        border-radius: 5px;
-        border: 1px solid #000000;
-        transition: background-color 0.3s, color 0.3s;
-    }
-
-    .logout-button:hover {
-        background-color: #c82333;
-        border-color: #c82333;
-        transform: scale(1.05);
-    }
-
     /* Basic container for centering */
     .container {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: auto; /* Changed from 100vh to auto for flexibility */
-        padding: 40px 20px; /* Increased padding to push content down */
-        background-color: #f4f6f9;
-        margin-top: 20px; /* Adds margin to push the form down */
+        height: 100vh;
+        padding: 20px;
+        background-color: #f4f6f9; /* Light background color */
     }
 
     h1 {
@@ -111,7 +68,6 @@
         color: #333;
         margin-bottom: 20px;
         text-align: center;
-        margin-top: 30px; /* Added margin to prevent overlap */
     }
 
     /* Styling the form */
@@ -121,9 +77,10 @@
         border-radius: 10px;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         width: 100%;
-        max-width: 400px;
+        max-width: 400px; /* Reduced the form width */
     }
 
+    /* Adjust form field spacing and appearance */
     .event-form p {
         margin-bottom: 15px;
     }
@@ -140,16 +97,16 @@
     .event-form input[type="file"],
     .event-form textarea {
         width: 100%;
-        padding: 8px;
-        margin-bottom: 10px;
+        padding: 8px; /* Reduced padding */
+        margin-bottom: 10px; /* Reduced margin */
         border: 1px solid #ccc;
         border-radius: 5px;
-        box-sizing: border-box; /* Ensure consistent sizing */
-        font-size: 14px;
+        box-sizing: border-box;
+        font-size: 14px; /* Reduced font size */
     }
 
     .event-form textarea {
-        height: 120px;
+        height: 120px; /* Reduced textarea height */
         resize: vertical;
     }
 
@@ -157,8 +114,8 @@
     .btn-submit {
         background-color: #2d0bee;
         color: white;
-        padding: 10px 15px;
-        font-size: 16px;
+        padding: 10px 15px; /* Reduced padding */
+        font-size: 16px; /* Reduced font size */
         border: none;
         border-radius: 5px;
         cursor: pointer;
@@ -169,7 +126,7 @@
 
     .btn-submit:hover {
         background-color: #1a00c3;
-        transform: scale(1.05);
+        transform: scale(1.05); /* Slightly increase size on hover */
     }
 
     /* Back to Dashboard Link */
@@ -199,7 +156,7 @@
         }
 
         .event-form {
-            padding: 15px;
+            padding: 15px; /* Reduced padding for smaller screens */
         }
     }
 </style>
